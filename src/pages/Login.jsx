@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { Lock, Mail, Loader2 } from 'lucide-react';
@@ -9,6 +9,15 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  // Redirect otomatis jika admin sudah login sebelumnya
+  useEffect(() => {
+    const token = localStorage.getItem('chilicare_token');
+    const user = localStorage.getItem('chilicare_user');
+    if (token && user) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -69,7 +78,7 @@ const Login = () => {
               <input
                 type="email"
                 className="form-control"
-                placeholder="admin@chilicare.com"
+                placeholder="admin@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
