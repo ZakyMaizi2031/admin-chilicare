@@ -113,7 +113,7 @@ const Landing = () => {
         <div className="benefits-container">
           <div className="benefits-image">
             <img 
-              src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?q=80&w=600&auto=format&fit=cover" 
+              src="/petani_sukses.jpg" 
               alt="Petani Cabai Sukses" 
               className="farmers-img"
             />
