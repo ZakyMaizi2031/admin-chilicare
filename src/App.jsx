@@ -6,13 +6,18 @@ import Users from './pages/Users';
 import Encyclopedia from './pages/Encyclopedia';
 import Artikel from './pages/Artikel';
 import Login from './pages/Login';
+import Landing from './pages/Landing'; // Import Landing Page baru
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Rute Publik */}
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<DashboardLayout />}>
+
+        {/* Rute Admin Terproteksi */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
           <Route path="encyclopedia" element={<Encyclopedia />} />

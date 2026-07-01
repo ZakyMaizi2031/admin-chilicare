@@ -31,19 +31,19 @@ const DashboardLayout = () => {
         </div>
         
         <nav className="sidebar-nav">
-          <NavLink to="/" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
+          <NavLink to="/dashboard" end className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
             <LayoutDashboard size={20} />
             <span>Dashboard</span>
           </NavLink>
-          <NavLink to="/users" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
+          <NavLink to="/dashboard/users" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
             <Users size={20} />
             <span>Petani</span>
           </NavLink>
-          <NavLink to="/encyclopedia" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
+          <NavLink to="/dashboard/encyclopedia" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
             <BookOpen size={20} />
             <span>Penyakit</span>
           </NavLink>
-          <NavLink to="/artikel" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
+          <NavLink to="/dashboard/artikel" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
             <FileText size={20} />
             <span>Artikel</span>
           </NavLink>

@@ -33,7 +33,7 @@ const Login = () => {
       localStorage.setItem('chilicare_user', JSON.stringify(user));
 
       // Redirect ke dashboard
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       console.error(err);
       if (err.response && err.response.data && err.response.data.detail) {
