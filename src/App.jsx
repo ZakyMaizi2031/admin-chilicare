@@ -5,11 +5,13 @@ import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import Encyclopedia from './pages/Encyclopedia';
 import Artikel from './pages/Artikel';
+import Login from './pages/Login';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />

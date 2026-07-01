@@ -1,8 +1,26 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Users, BookOpen, FileText } from 'lucide-react';
+import { NavLink, Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, Users, BookOpen, FileText, LogOut } from 'lucide-react';
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('chilicare_token');
+  const userJson = localStorage.getItem('chilicare_user');
+  const user = userJson ? JSON.parse(userJson) : null;
+
+  // Proteksi Route: Jika tidak ada token atau bukan admin, arahkan ke halaman login
+  if (!token || !user || user.role !== 'admin') {
+    return <Navigate to="/login" replace />;
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('chilicare_token');
+    localStorage.removeItem('chilicare_user');
+    navigate('/login');
+  };
+
+  const initialName = user.nama_lengkap ? user.nama_lengkap.charAt(0).toUpperCase() : 'A';
+
   return (
     <div className="app-container">
       {/* Sidebar */}
@@ -37,10 +55,14 @@ const DashboardLayout = () => {
         <header className="topbar">
           <h1 className="topbar-title">Admin Dashboard</h1>
           <div className="topbar-profile">
-            <div className="profile-avatar">A</div>
-            <span>Admin ChiliCare</span>
+            <div className="profile-avatar">{initialName}</div>
+            <span>{user.nama_lengkap}</span>
+            <button onClick={handleLogout} className="btn-logout" title="Keluar dari Sistem">
+              <LogOut size={18} />
+            </button>
           </div>
         </header>
+
 
         <div className="content-area animate-fade-in">
           <Outlet />
@@ -112,6 +134,22 @@ const DashboardLayout = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        .btn-logout {
+          background: none;
+          border: none;
+          color: var(--text-muted);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.5rem;
+          border-radius: 50%;
+          transition: var(--transition);
+        }
+        .btn-logout:hover {
+          background-color: var(--surface-hover);
+          color: var(--danger);
         }
       `}</style>
     </div>
