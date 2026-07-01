@@ -54,7 +54,7 @@ const Landing = () => {
               <div className="mock-scanner">
                 <div className="scanner-line"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1588252399222-196b5c706c54?q=80&w=600&auto=format&fit=cover" 
+                  src="/download.jpg" 
                   alt="Cabai Merah Terinfeksi" 
                   className="mock-img"
                 />
