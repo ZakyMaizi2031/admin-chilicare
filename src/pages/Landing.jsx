@@ -113,7 +113,7 @@ const Landing = () => {
         <div className="benefits-container">
           <div className="benefits-image">
             <img 
-              src="/petani_sukses.jpg" 
+              src="/petani_cabe.jpg" 
               alt="Petani Cabai Sukses" 
               className="farmers-img"
             />
